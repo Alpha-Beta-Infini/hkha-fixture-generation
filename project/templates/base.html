@@ -1,16 +1,4 @@
 <!DOCTYPE html>
-<!--<html>-->
-
-<!--<head>-->
-<!--    <meta charset="utf-8">-->
-<!--    <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
-<!--    <title>HKHA Fixture Scheduling App</title>-->
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />-->
-<!--    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">-->
-<!--</head>-->
-
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <title>HKHA Fixture Scheduling App</title>
@@ -19,9 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
     <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
-    <!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+<!--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
 
     <title>{% block title %} {% endblock %}</title>
+
+    <script type="text/JavaScript">
+      function showStartDate(){
+        let startDate =  "Start date entered: " + document.getElementById("startDate").value;
+        display_start_date.innerHTML= startDate;
+      }
+    </script>
+
+    <style>
+    </style>
+
   </head>
 
 <body>
@@ -54,6 +53,11 @@
                                 Logout
                             </a>
                             {% endif %}
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.scheduler') }}" class="navbar-item">
+                              Scheduler
+                            </a>
+                          {% endif %}
                         </div>
                     </div>
                 </div>

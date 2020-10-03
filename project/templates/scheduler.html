@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title" style="padding-bottom: 5%">
+  HKHA fixture scheduler
+</h1>
+
+<form action="{{ url_for('main.handle_data') }}" method="post">
+	<p class="subtitle">
+		<strong>Start Date</strong>
+	</p>
+
+	<div class="field has-addons">
+	  <div class="control is-expanded">
+		  <input class="input" type="date" id="startDate" name="startDate" placeholder="dd/mm/yyyy" />
+	  </div>
+
+		<div class="control">
+			<button type="submit" onclick="showStartDate()" class="button is-primary">
+				Enter
+			</button>
+		</div>
+	</div>
+</form>
+
+<p class="help" style="text-align: start">The date picker is only supported by the Google Chrome or Mozilla Firefox browsers</p>
+
+<p style="padding: 2% 0"><span id = "display_start_date"></span></p>
+
+{% endblock %}
