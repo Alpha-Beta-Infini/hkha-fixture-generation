@@ -1,3 +1,4 @@
+import os.path
 import sqlite3
 import json
 from flask import Blueprint, render_template, request, redirect, url_for
@@ -10,25 +11,32 @@ main = Blueprint('main', __name__)
 
 
 def get_db_connection():
-    conn = sqlite3.connect('hockey.db')
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    db_path = os.path.join(BASE_DIR, "hockey.db")
+    conn = sqlite3.connect(db_path)
     conn.row_factory = sqlite3.Row
     return conn
 
 
-def get_teams(league=None):
+def get_teams(league='MENS'):
     conn = get_db_connection()
+    # conn = sqlite3.connect('hockey.db')
+    # conn.row_factory = sqlite3.Row
+    temp = None
     if league == 'MENS':
-        temp = conn.execute("SELECT * FROM teams WHERE title2='Men''s'")
-        row_headers = [x[0] for x in temp.description]
-        teams = temp.fetchall()
-        json_data = []
-        for team in teams:
-            json_data.append(dict(zip(row_headers, team)))
-        teams_json = json.dumps(json_data)
-        conn.close()
-        if teams_json is None:
-            abort(404)
-        return teams_json
+        temp = conn.execute("SELECT * FROM 'teams' WHERE title2='Men''s'")
+    elif league == "WOMENS":
+        temp = conn.execute("SELECT * FROM 'teams' WHERE title2='Women''s'")
+    row_headers = [x[0] for x in temp.description]
+    teams = temp.fetchall()
+    json_data = []
+    for team in teams:
+        json_data.append(dict(zip(row_headers, team)))
+    teams_json = json.dumps(json_data)
+    conn.close()
+    if teams_json is None:
+        abort(404)
+    return teams
 
 
 @main.route('/')
@@ -48,16 +56,17 @@ def scheduler():
     return render_template('scheduler.html')
 
 
-@main.route('/timetable')
-@login_required
-def timetable(start_date=None, teams_json=None):
-    return render_template('timetable.html')
+# @main.route('/timetable')
+# @login_required
+# def timetable():
+#     return render_template('timetable.html', start_date=start_date, league=league, teams_json=teams_json)
 
 
 @main.route('/handle_data', methods=['GET', 'POST'])
 def handle_data():
     if request.method == 'POST':
         start_date = request.form['startDate']
+        league = request.form['League']
 
         teams_json = get_teams()
 
@@ -69,4 +78,4 @@ def handle_data():
             temp = [key, value]
             hk_holidays_list.append(temp[0].isoformat())
 
-        return redirect(url_for('main.timetable', start_date=start_date, teams_json=teams_json))
+        return render_template('timetable.html', start_date=start_date, league=league, teams_json=teams_json)

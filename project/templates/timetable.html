@@ -8,4 +8,11 @@
   Based on the start date input, men's/women's league chosen, and existing data in database.
 </h2>
 
+  {% for team in teams_json %}
+  <div href="#">
+      <h2>{{ team['title'] }}</h2>
+  </div>
+  <hr>
+  {% endfor %}
+
 {% endblock %}

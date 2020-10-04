@@ -6,25 +6,43 @@
 </h1>
 
 <form action="{{ url_for('main.handle_data') }}" method="post">
-	<p class="subtitle">
-		<strong>Start Date</strong>
-	</p>
+<!--	<p class="subtitle">-->
+<!--		<strong>Start Date</strong>-->
+<!--	</p>-->
 
-	<div class="field has-addons">
+	<div class="field">
+		<label class="label level-left">Start Date</label>
 	  <div class="control is-expanded">
 		  <input class="input" type="date" id="startDate" name="startDate" placeholder="dd/mm/yyyy" />
 	  </div>
-
-		<div class="control">
-			<button type="submit" onclick="showStartDate()" class="button is-primary">
-				Enter
-			</button>
-		</div>
 	</div>
+
+	<p class="help level-left" style="padding-bottom: 1rem">The date picker is only supported by the Google Chrome or Mozilla Firefox browsers</p>
+
+	<div class="field">
+  <label class="label level-left">League</label>
+  <div class="control">
+    <div class="select">
+      <select id="League" name="League">
+        <option>Select dropdown</option>
+        <option>Men's</option>
+	      <option>Women's</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+	<div class="control">
+<!--		<button type="submit" onclick="showStartDate()" class="button is-primary">-->
+		<button type="submit" class="button is-primary">
+			Enter
+		</button>
+	</div>
+
 </form>
 
-<p class="help" style="text-align: start">The date picker is only supported by the Google Chrome or Mozilla Firefox browsers</p>
+<!--<p style="padding: 2% 0"><span id = "display_start_date"></span></p>-->
 
-<p style="padding: 2% 0"><span id = "display_start_date"></span></p>
+
 
 {% endblock %}
