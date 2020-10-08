@@ -5,10 +5,7 @@
   HKHA fixture scheduler
 </h1>
 
-<form action="{{ url_for('main.handle_data') }}" method="post">
-<!--	<p class="subtitle">-->
-<!--		<strong>Start Date</strong>-->
-<!--	</p>-->
+<form action="{{ url_for('main.timetable') }}" method="post">
 
 	<div class="field">
 		<label class="label level-left">Start Date</label>
@@ -24,7 +21,6 @@
   <div class="control">
     <div class="select">
       <select id="League" name="League">
-        <option>Select dropdown</option>
         <option>Men's</option>
 	      <option>Women's</option>
       </select>
@@ -33,16 +29,11 @@
 </div>
 
 	<div class="control">
-<!--		<button type="submit" onclick="showStartDate()" class="button is-primary">-->
 		<button type="submit" class="button is-primary">
 			Enter
 		</button>
 	</div>
 
 </form>
-
-<!--<p style="padding: 2% 0"><span id = "display_start_date"></span></p>-->
-
-
 
 {% endblock %}

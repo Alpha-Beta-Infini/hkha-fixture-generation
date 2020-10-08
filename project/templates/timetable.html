@@ -1,18 +1,64 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1 class="title">
-  Time table generated
-</h1>
-<h2 class="subtitle">
-  Based on the start date input, men's/women's league chosen, and existing data in database.
-</h2>
+  <h1 class="title">
+    Time table generated
+  </h1>
+  <h2 class="subtitle">
+    Based on the start date input, men's/women's league chosen, and existing data in database.
+  </h2>
 
-  {% for team in teams_json %}
+  <h2><strong>Start date:</strong> {{ start_date }}</h2>
+
+  <h2><strong>League:</strong> {{ league }}</h2>
+
+  <hr />
+
+  <h2>{{ premier_games}}</h2>
+
+  <h2>Total premier division games to be played: {{ number_premier_games }}</h2>
+
+  <hr />
+
+  <h2>{{ first_div_games }}</h2>
+
+  <h2>Total 1st division games to be played: {{ number_first_div_games }}</h2>
+
+  <hr />
+
+  <h2>{{ second_div_games }}</h2>
+
+  <h2>Total 2nd division games to be played: {{ number_second_div_games }}</h2>
+
+  <hr />
+
+  <h2>{{ third_div_games }}</h2>
+
+  <h2>Total 3rd division games to be played: {{ number_third_div_games }}</h2>
+
+  <hr />
+
+  <h2>{{ fourth_div_games }}</h2>
+
+  <h2>Total 4th division games to be played: {{ number_fourth_div_games }}</h2>
+
+  <hr />
+
+  <h2>{{ fifth_div_games }}</h2>
+
+  <h2>Total 5th division games to be played: {{ number_fifth_div_games }}</h2>
+
+  <hr />
+
+  <h2>{{ sixth_div_games }}</h2>
+
+  <h2>Total 6th division games to be played: {{ number_sixth_div_games }}</h2>
+
+
+  {% for game_day in dd %}
   <div href="#">
-      <h2>{{ team['title'] }}</h2>
+    <h2>{{ game_day }}</h2>
   </div>
-  <hr>
   {% endfor %}
 
 {% endblock %}
