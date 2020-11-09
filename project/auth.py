@@ -5,8 +5,8 @@ from .models import User
 from . import db
 
 
-auth = Blueprint('auth', __name__)
-
+# auth = Blueprint('auth', __name__)
+auth = Flask(__name__)
 
 @auth.route('/login')
 def login():
