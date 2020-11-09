@@ -41,15 +41,15 @@
                             </a>
                             {% endif %}
                             {% if not is_authenticated %}
-                            <a href="{{ url_for('auth.login') }}" class="navbar-item">
+                            <a href="{{ url_for('login') }}" class="navbar-item">
                                 Login
                             </a>
-                            <a href="{{ url_for('auth.signup') }}" class="navbar-item">
+                            <a href="{{ url_for('signup') }}" class="navbar-item">
                                 Sign Up
                             </a>
                             {% endif %}
                             {% if is_authenticated %}
-                            <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+                            <a href="{{ url_for('logout') }}" class="navbar-item">
                                 Logout
                             </a>
                             {% endif %}
