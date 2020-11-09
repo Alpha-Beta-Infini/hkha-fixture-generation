@@ -1,1 +1,1 @@
-web: gunicorn hkha-fixture-generation:project.main
+web: gunicorn project:hkha-fixture-generation
