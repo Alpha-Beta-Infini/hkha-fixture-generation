@@ -6,7 +6,7 @@ import datetime
 from random import sample
 from datetime import date, timedelta
 from math import ceil
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, Flask, render_template, request, redirect, url_for
 from flask_login import login_required, current_user
 from werkzeug.exceptions import abort
 import calendar
@@ -16,8 +16,11 @@ import pandas as pd
 import tempfile
 
 
-main = Blueprint('main', __name__)
+# main = Blueprint('main', __name__)
 
+my_app = Flask(__name__)
+if __name__ == '__main__':
+    my_app.run()
 
 def get_db_connection():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
