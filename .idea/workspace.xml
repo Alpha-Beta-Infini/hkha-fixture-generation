@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="50c70a4f-7d85-4cc3-8ede-8cb2a1742f8a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/games.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/hockey.db" beforeDir="false" afterPath="$PROJECT_DIR$/project/hockey.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/scheduler.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/scheduler.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/timetable.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/timetable.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/round_1_games.csv" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +59,9 @@
       <workItem from="1601911260064" duration="1000" />
       <workItem from="1601996632472" duration="9047000" />
       <workItem from="1602073405242" duration="4658000" />
-      <workItem from="1602166830321" duration="5825000" />
+      <workItem from="1602166830321" duration="6079000" />
+      <workItem from="1602379924921" duration="13443000" />
+      <workItem from="1602451610884" duration="193000" />
     </task>
     <servers />
   </component>

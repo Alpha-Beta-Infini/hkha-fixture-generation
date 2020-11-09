@@ -171,20 +171,51 @@ def timetable():
                 number_premier_games = len(premier_game_pairings)
 
                 premier_games = {}
+                found_hkfc = False
                 for i, day in enumerate(premier_game_pairings):
                     random.shuffle(day)
-                    premier_games[i + 1] = day
-
-                premier_games_df = pd.DataFrame.from_dict(premier_games)
+                    # premier_games[i + 1] = day
+                    updated_pairings = []
+                    for pairing in day:
+                        if (pairing[0].startswith('HKFC') or pairing[1].startswith('HKFC')) and (not found_hkfc):
+                            temp = [pairing, 'HKFC']
+                            found_hkfc = True
+                        else:
+                            temp = [pairing, 'KP']
+                        updated_pairings.append(temp)
+                    found_hkfc = False
+                    premier_games[i + 1] = updated_pairings
 
                 first_div_pairings = list(round_robin(first_div, sets=(len(first_div) * 2 - 2)))
                 number_first_div_games = len(first_div_pairings)
 
                 first_div_games = {}
+                # for i, day in enumerate(first_div_pairings):
+                random.shuffle(day)
+                # first_div_games[i + 1] = day
+
+                first_div_games = {}
+                found_hkfc = False
+                is_at_kp = False
+                is_at_hv = False
                 for i, day in enumerate(first_div_pairings):
                     random.shuffle(day)
-                    first_div_games[i + 1] = day
-
+                    updated_pairings = []
+                    for pairing in day:
+                        if (pairing[0].startswith('HKFC') or pairing[1].startswith('HKFC')) and (not found_hkfc):
+                            temp = [pairing, 'HKFC']
+                            found_hkfc = True
+                        elif (not found_hkfc) and (not is_at_kp) and (not is_at_hv):
+                            temp = [pairing, 'KP']
+                            is_at_kp = True
+                        else:
+                            temp = [pairing, 'HV']
+                            is_at_hv = True
+                        updated_pairings.append(temp)
+                    found_hkfc = False
+                    is_at_kp = False
+                    is_at_hv = False
+                    first_div_games[i + 1] = updated_pairings
                 first_div_df = pd.DataFrame.from_dict(first_div_games)
 
                 second_div_pairings = list(round_robin(second_div, sets=(len(second_div) * 2 - 2)))
@@ -195,6 +226,37 @@ def timetable():
                     random.shuffle(day)
                     second_div_games[i + 1] = day
 
+                found_hkfc = False
+                is_at_kp = False
+                is_at_hv = False
+                is_at_bs = False
+                is_at_lf = False
+                for i, day in enumerate(second_div_pairings):
+                    random.shuffle(day)
+                    updated_pairings = []
+                    for pairing in day:
+                        if (pairing[0].startswith('HKFC') or pairing[1].startswith('HKFC')) and (not found_hkfc):
+                            temp = [pairing, 'HKFC']
+                            found_hkfc = True
+                        elif (not is_at_kp) and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'KP']
+                            is_at_kp = True
+                        elif is_at_kp and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'BS']
+                            is_at_bs = True
+                        elif is_at_kp and (not is_at_hv) and is_at_bs and (not is_at_lf):
+                            temp = [pairing, 'LF']
+                            is_at_lf = True
+                        else:
+                            temp = [pairing, 'HV']
+                            is_at_hv = True
+                        updated_pairings.append(temp)
+                    found_hkfc = False
+                    is_at_kp = False
+                    is_at_hv = False
+                    is_at_bs = False
+                    is_at_lf = False
+                    second_div_games[i + 1] = updated_pairings
                 second_div_df = pd.DataFrame.from_dict(second_div_games)
 
                 third_div_pairings = list(round_robin(third_div, sets=(len(third_div) * 2 - 2)))
@@ -205,6 +267,38 @@ def timetable():
                     random.shuffle(day)
                     third_div_games[i + 1] = day
 
+                third_div_games = {}
+                found_hkfc = False
+                is_at_kp = False
+                is_at_hv = False
+                is_at_bs = False
+                is_at_lf = False
+                for i, day in enumerate(third_div_pairings):
+                    random.shuffle(day)
+                    updated_pairings = []
+                    for pairing in day:
+                        if (pairing[0].startswith('HKFC') or pairing[1].startswith('HKFC')) and (not found_hkfc):
+                            temp = [pairing, 'HKFC']
+                            found_hkfc = True
+                        elif (not is_at_kp) and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'KP']
+                            is_at_kp = True
+                        elif is_at_kp and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'BS']
+                            is_at_bs = True
+                        elif is_at_kp and (not is_at_hv) and is_at_bs and (not is_at_lf):
+                            temp = [pairing, 'LF']
+                            is_at_lf = True
+                        else:
+                            temp = [pairing, 'HV']
+                            is_at_hv = True
+                        updated_pairings.append(temp)
+                    found_hkfc = False
+                    is_at_kp = False
+                    is_at_hv = False
+                    is_at_bs = False
+                    is_at_lf = False
+                    third_div_games[i + 1] = updated_pairings
                 third_div_df = pd.DataFrame.from_dict(third_div_games)
 
                 fourth_div_pairings = list(round_robin(fourth_div, sets=(len(fourth_div) * 2 - 2)))
@@ -215,6 +309,38 @@ def timetable():
                     random.shuffle(day)
                     fourth_div_games[i + 1] = day
 
+                fourth_div_games = {}
+                found_hkfc = False
+                is_at_kp = False
+                is_at_hv = False
+                is_at_bs = False
+                is_at_lf = False
+                for i, day in enumerate(fourth_div_pairings):
+                    random.shuffle(day)
+                    updated_pairings = []
+                    for pairing in day:
+                        if (pairing[0].startswith('HKFC') or pairing[1].startswith('HKFC')) and (not found_hkfc):
+                            temp = [pairing, 'HKFC']
+                            found_hkfc = True
+                        elif (not is_at_kp) and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'KP']
+                            is_at_kp = True
+                        elif is_at_kp and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'BS']
+                            is_at_bs = True
+                        elif is_at_kp and (not is_at_hv) and is_at_bs and (not is_at_lf):
+                            temp = [pairing, 'LF']
+                            is_at_lf = True
+                        else:
+                            temp = [pairing, 'HV']
+                            is_at_hv = True
+                        updated_pairings.append(temp)
+                    found_hkfc = False
+                    is_at_kp = False
+                    is_at_hv = False
+                    is_at_bs = False
+                    is_at_lf = False
+                    fourth_div_games[i + 1] = updated_pairings
                 fourth_div_df = pd.DataFrame.from_dict(fourth_div_games)
 
                 fifth_div_pairings = list(round_robin(fifth_div, sets=(len(fifth_div) * 2 - 2)))
@@ -225,6 +351,38 @@ def timetable():
                     random.shuffle(day)
                     fifth_div_games[i + 1] = day
 
+                fifth_div_games = {}
+                found_hkfc = False
+                is_at_kp = False
+                is_at_hv = False
+                is_at_bs = False
+                is_at_lf = False
+                for i, day in enumerate(fifth_div_pairings):
+                    random.shuffle(day)
+                    updated_pairings = []
+                    for pairing in day:
+                        if (pairing[0].startswith('HKFC') or pairing[1].startswith('HKFC')) and (not found_hkfc):
+                            temp = [pairing, 'HKFC']
+                            found_hkfc = True
+                        elif (not is_at_kp) and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'KP']
+                            is_at_kp = True
+                        elif is_at_kp and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'BS']
+                            is_at_bs = True
+                        elif is_at_kp and (not is_at_hv) and is_at_bs and (not is_at_lf):
+                            temp = [pairing, 'LF']
+                            is_at_lf = True
+                        else:
+                            temp = [pairing, 'HV']
+                            is_at_hv = True
+                        updated_pairings.append(temp)
+                    found_hkfc = False
+                    is_at_kp = False
+                    is_at_hv = False
+                    is_at_bs = False
+                    is_at_lf = False
+                    fifth_div_games[i + 1] = updated_pairings
                 fifth_div_df = pd.DataFrame.from_dict(fifth_div_games)
 
                 sixth_div_pairings = list(round_robin(sixth_div, sets=(len(sixth_div) * 2 - 2)))
@@ -237,10 +395,46 @@ def timetable():
 
                 sixth_div_df = pd.DataFrame.from_dict(sixth_div_games)
 
+                sixth_div_games = {}
+                found_hkfc = False
+                is_at_kp = False
+                is_at_hv = False
+                is_at_bs = False
+                is_at_lf = False
+                for i, day in enumerate(sixth_div_pairings):
+                    random.shuffle(day)
+                    updated_pairings = []
+                    for pairing in day:
+                        if (pairing[0].startswith('HKFC') or pairing[1].startswith('HKFC')) and (not found_hkfc):
+                            temp = [pairing, 'HKFC']
+                            found_hkfc = True
+                        elif (not is_at_kp) and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'KP']
+                            is_at_kp = True
+                        elif is_at_kp and (not is_at_hv) and (not is_at_bs) and (not is_at_lf):
+                            temp = [pairing, 'BS']
+                            is_at_bs = True
+                        elif is_at_kp and (not is_at_hv) and is_at_bs and (not is_at_lf):
+                            temp = [pairing, 'LF']
+                            is_at_lf = True
+                        else:
+                            temp = [pairing, 'HV']
+                            is_at_hv = True
+                        updated_pairings.append(temp)
+                    found_hkfc = False
+                    is_at_kp = False
+                    is_at_hv = False
+                    is_at_bs = False
+                    is_at_lf = False
+                    sixth_div_games[i + 1] = updated_pairings
+                sixth_div_df = pd.DataFrame.from_dict(sixth_div_games)
+
+                premier_games_df = pd.DataFrame.from_dict(premier_games)
+
                 frames = [premier_games_df, first_div_df, second_div_df, third_div_df, fourth_div_df, fifth_div_df, sixth_div_df]
                 all_games_df = pd.concat(frames)
 
-                all_games_df.to_csv('round_1_games.csv',index=False)
+                all_games_df.to_csv('games.csv',index=False)
 
         return render_template('timetable.html',
                                start_date=start_date,
