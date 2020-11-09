@@ -41,20 +41,20 @@
                             </a>
                             {% endif %}
                             {% if not is_authenticated %}
-                            <a href="{{ url_for('login') }}" class="navbar-item">
+                            <a href="{{ 'login.html' }}" class="navbar-item">
                                 Login
                             </a>
-                            <a href="{{ url_for('signup') }}" class="navbar-item">
+                            <a href="{{ 'signup.html' }}" class="navbar-item">
                                 Sign Up
                             </a>
                             {% endif %}
                             {% if is_authenticated %}
-                            <a href="{{ url_for('logout') }}" class="navbar-item">
+                            <a href="{{ 'logout.html' }}" class="navbar-item">
                                 Logout
                             </a>
                             {% endif %}
                             {% if is_authenticated %}
-                            <a href="{{ url_for('scheduler') }}" class="navbar-item">
+                            <a href="{{ 'scheduler.html' }}" class="navbar-item">
                               Scheduler
                             </a>
                           {% endif %}
