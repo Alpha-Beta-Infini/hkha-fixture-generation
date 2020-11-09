@@ -69,7 +69,7 @@ def round_robin(units, sets=None):
 
 @main.route('/')
 def index():
-    return render_template(url_for('index'))
+    return render_template('index.html')
 
 
 @main.route('/profile')
