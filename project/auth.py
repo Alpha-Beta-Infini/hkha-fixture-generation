@@ -4,6 +4,7 @@ from flask_login import login_user, logout_user, login_required
 from .models import User
 from . import db
 
+
 auth = Blueprint('auth', __name__)
 
 
@@ -28,7 +29,7 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
-    return redirect(url_for('main.profile'))
+    return redirect(url_for('profile'))
 
 
 @auth.route('/signup')
