@@ -18,10 +18,6 @@ import tempfile
 
 main = Blueprint('main', __name__)
 
-# my_app = Flask(__name__)
-# if __name__ == '__main__':
-    # main.run()
-
 def get_db_connection():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     db_path = os.path.join(BASE_DIR, "hockey.db")
@@ -459,4 +455,5 @@ def timetable():
                                )
     
 if __name__ == '__main__':
-    main.run()
+    myapp = main
+    myapp.run()

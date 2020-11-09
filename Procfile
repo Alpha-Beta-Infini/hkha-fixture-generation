@@ -1,1 +1,1 @@
-web: gunicorn "project:main('development')"
+web: gunicorn "project:myapp('development')"
