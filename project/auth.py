@@ -29,7 +29,7 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
-    return redirect('profile.html')
+    return render_template('profile.html')
 
 
 @auth.route('/signup')
