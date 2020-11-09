@@ -458,5 +458,5 @@ def timetable():
                                number_sixth_div_games=number_sixth_div_games
                                )
     
-    if __name__ == '__main__':
-        main.run()
+if __name__ == '__main__':
+    main.run()
