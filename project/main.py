@@ -78,12 +78,6 @@ def profile():
     return render_template('profile.html', name=name)
 
 
-@main.route('/scheduler')
-@login_required
-def scheduler():
-    return render_template(url_for('scheduler'))
-
-
 @main.route('/login')
 def login():
     return render_template('login.html')
@@ -142,6 +136,12 @@ def signup_post():
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+
+@main.route('/scheduler')
+@login_required
+def scheduler():
+    return render_template(url_for('scheduler'))
 
 
 @main.route('/timetable', methods=['GET', 'POST'])
