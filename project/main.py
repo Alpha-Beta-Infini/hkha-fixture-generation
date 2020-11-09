@@ -16,11 +16,11 @@ import pandas as pd
 import tempfile
 
 
-# main = Blueprint('main', __name__)
+main = Blueprint('main', __name__)
 
-my_app = Flask(__name__)
-if __name__ == '__main__':
-    my_app.run()
+# my_app = Flask(__name__)
+# if __name__ == '__main__':
+#     my_app.run()
 
 def get_db_connection():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
