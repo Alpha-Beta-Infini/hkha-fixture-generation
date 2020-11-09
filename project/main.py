@@ -69,24 +69,24 @@ def round_robin(units, sets=None):
 
 @main.route('/')
 def index():
-    return render_template('index.html')
+    return render_template(url_for('index'))
 
 
 @main.route('/profile')
 @login_required
 def profile():
-    return render_template('profile.html', name=current_user.name)
+    return render_template(url_for('profile'), name=current_user.name)
 
 
 @main.route('/scheduler')
 @login_required
 def scheduler():
-    return render_template('scheduler.html')
+    return render_template(url_for('scheduler'))
 
 
 @main.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template(url_for('login'))
 
 
 @main.route('/login', methods=['POST'])
@@ -101,16 +101,16 @@ def login_post():
     # take the user supplied password, hash it, and compare it to the hashed password in database
     if not user or not check_password_hash(user.password, password):
         flash('Please check your login details and try again.')
-        return redirect('login.html')  # if user doesn't exist or password is wrong, reload the page
+        return redirect(url_for('login'))  # if user doesn't exist or password is wrong, reload the page
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
-    return render_template('profile.html')
+    return render_template(url_for('profile'))
 
 
 @main.route('/signup')
 def signup():
-    return render_template('signup.html')
+    return render_template(url_for('signup'))
 
 
 @main.route('/signup', methods=['POST'])
@@ -125,7 +125,7 @@ def signup_post():
 
     if user:  # if a user is found, we want to redirect back to signup page so user can try again
         flash('Email address already exists')
-        return redirect('signup.html')
+        return redirect(url_for('signup'))
 
     # create new user with the form data. Hash the password so plaintext version isn't saved.
     new_user = User(email=email, name=name, password=generate_password_hash(password, method='sha256'))
@@ -134,14 +134,14 @@ def signup_post():
     db.session.add(new_user)
     db.session.commit()
 
-    return redirect('login.html')
+    return redirect(url_for('login'))
 
 
 @main.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect('index.html')
+    return redirect(url_for('index'))
 
 
 @main.route('/timetable', methods=['GET', 'POST'])
