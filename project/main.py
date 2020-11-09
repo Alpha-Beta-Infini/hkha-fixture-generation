@@ -20,7 +20,7 @@ main = Blueprint('main', __name__)
 
 # my_app = Flask(__name__)
 # if __name__ == '__main__':
-#     my_app.run()
+    # main.run()
 
 def get_db_connection():
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -458,5 +458,5 @@ def timetable():
                                number_sixth_div_games=number_sixth_div_games
                                )
     
-    if __name__ == '__main__':
-        main.run()
+if __name__ == '__main__':
+    main.run()
