@@ -457,3 +457,6 @@ def timetable():
                                sixth_div_games=sixth_div_games,
                                number_sixth_div_games=number_sixth_div_games
                                )
+    
+    if __name__ == '__main__':
+        main.run()
