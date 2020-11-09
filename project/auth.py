@@ -68,4 +68,4 @@ def logout():
     return redirect('index.html')
 
 if __name__ == '__main__':
-    auth.run()
+    main.run()
