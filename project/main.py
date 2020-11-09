@@ -86,7 +86,7 @@ def scheduler():
 
 @main.route('/login')
 def login():
-    return render_template(url_for('login'))
+    return render_template('login.html')
 
 
 @main.route('/login', methods=['POST'])
