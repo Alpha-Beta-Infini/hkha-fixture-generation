@@ -455,5 +455,5 @@ def timetable():
                                )
     
 if __name__ == '__main__':
-    myapp = create_app()
-#     myapp.run()
+    myapp = main()
+    myapp.run()
