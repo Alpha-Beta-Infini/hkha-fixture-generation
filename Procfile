@@ -1,1 +1,1 @@
-web: gunicorn "project:myapp('development')"
+web: gunicorn wsgi:main
